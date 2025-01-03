@@ -8,15 +8,14 @@ app.use(cors());
 
 // Proxy setup
 const apiProxy = createProxyMiddleware({
-  target: (req)=> {
-    const {input} = req.params;
+  target: (req) => {
+    // Extract input from the request parameters
+    const { input } = req.params;
+    // Dynamically construct the target URL with the input value
     return `https://maps.googleapis.com/maps/api/place/autocomplete/json?key=${process.env.GOOGLE_API_KEY}&input=${input}`;
-
-  },  
+  },
   changeOrigin: true,
-  pathRewrite: {
-    '^/api': '', // Remove the '/api' prefix before forwarding to the target
-  }
+  // You don't need to use pathRewrite in this case
 });
 
 app.use('/api/:input', apiProxy);
