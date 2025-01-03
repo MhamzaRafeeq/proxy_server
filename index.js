@@ -12,7 +12,7 @@ const apiProxy = createProxyMiddleware({
     // Extract input from the request parameters
     const { input } = req.params;
     // Dynamically construct the target URL with the input value
-    return `https://maps.googleapis.com/maps/api/place/autocomplete/json?key=${process.env.GOOGLE_API_KEY}&input=${input}`;
+    return `https://maps.googleapis.com/maps/api/place/autocomplete/json?key=${process.env.GOOGLE_API_KEY}&input=pak`;
   },
   changeOrigin: true,
   // You don't need to use pathRewrite in this case
