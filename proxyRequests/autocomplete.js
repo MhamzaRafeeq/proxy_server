@@ -6,7 +6,8 @@ const autocompleteProxy = createProxyMiddleware({
     on: {
       proxyReq: (proxyReq, req, res) => {
         const { input } = req.params;
-        proxyReq.path = `/maps/api/place/autocomplete/json?key=${process.env.GOOGLE_API_KEY}&input=${input}`
+        const urlEncodedInput = encodeURIComponent(input);
+        proxyReq.path = `/maps/api/place/autocomplete/json?key=${process.env.GOOGLE_API_KEY}&input=${urlEncodedInput}`
       }
   
     },
